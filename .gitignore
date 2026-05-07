@@ -1,0 +1,11 @@
+.DS_Store
+DerivedData/
+*.xcuserdata/
+*.xcuserstate
+build/
+*.ipa
+*.xcarchive
+appstore_setup.py
+create_app.py
+*.p8
+*.mobileprovision

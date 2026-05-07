@@ -3,80 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BodyReader – サポート</title>
+  <title>BodyReader サポート</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; }
     body {
-      background: #FFF8F5;
-      color: #4a3f3f;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 24px;
+      padding: 48px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: #fff4e7;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(25,198,180,.28), transparent 34rem),
+        radial-gradient(circle at 88% 76%, rgba(255,111,97,.28), transparent 34rem),
+        linear-gradient(135deg, #071a2f, #102b3f 58%, #261b24);
     }
-    h1 { font-size: 2rem; color: #F0A8D0; margin-bottom: 8px; }
-    .subtitle { color: #a08080; font-size: 0.95rem; margin-bottom: 48px; }
+    main { max-width: 860px; margin: 0 auto; }
+    .hero {
+      display: grid;
+      gap: 22px;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 28px;
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+    }
+    h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 4.8rem); letter-spacing: -.04em; }
+    .lead { margin: 0; max-width: 680px; color: rgba(255,244,231,.78); font-size: 1.08rem; line-height: 1.8; }
+    .grid { display: grid; gap: 18px; margin-top: 22px; }
     .card {
-      background: #fff;
-      border: 1px solid #F0A8D040;
-      border-radius: 16px;
-      padding: 32px;
-      max-width: 600px;
-      width: 100%;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 16px #F0A8D020;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      background: rgba(255,244,231,.94);
+      color: #271d1a;
     }
-    h2 { color: #F0A8D0; font-size: 1.1rem; margin-bottom: 16px; }
-    p { line-height: 1.7; color: #6a5555; margin-bottom: 12px; }
-    a { color: #F0A8D0; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .contact-btn {
+    h2 { margin: 0 0 12px; color: #102b3f; font-size: 1.25rem; }
+    p { margin: 0 0 12px; color: #765f56; line-height: 1.75; }
+    a { color: #0a887d; font-weight: 700; }
+    .button {
       display: inline-block;
-      margin-top: 16px;
-      padding: 12px 28px;
-      background: #FFF0F8;
-      border: 1px solid #F0A8D0;
-      border-radius: 8px;
-      color: #F0A8D0;
-      font-size: 0.95rem;
+      margin-top: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: #071a2f;
+      background: #f3b755;
+      text-decoration: none;
     }
-    footer { color: #c0a0a0; font-size: 0.8rem; margin-top: 48px; }
+    footer { margin-top: 28px; color: rgba(255,244,231,.52); text-align: center; font-size: .85rem; }
   </style>
 </head>
 <body>
-  <h1>💕 BodyReader</h1>
-  <p class="subtitle">ボディランゲージ読み解きガイド</p>
+  <main>
+    <section class="hero">
+      <div>
+        <h1>BodyReader</h1>
+        <p class="lead">しぐさ、視線、手の動き、距離感から感情の手がかりを学ぶボディサイン図鑑アプリです。診断ではなく、会話をやさしく助けるヒントとして使えます。</p>
+      </div>
+    </section>
 
-  <div class="card">
-    <h2>サポート / Support</h2>
-    <p>BodyReaderについてご質問・ご不明点がございましたら、メールでお問い合わせください。通常2〜3営業日以内にご返信いたします。</p>
-    <p>For questions or support, please contact us by email. We typically respond within 2–3 business days.</p>
-    <a class="contact-btn" href="mailto:support@tokyonasu.com">✉ support@tokyonasu.com</a>
-  </div>
+    <section class="grid">
+      <div class="card">
+        <h2>サポート</h2>
+        <p>BodyReaderについての質問、不具合、改善要望がありましたらメールでご連絡ください。</p>
+        <a class="button" href="mailto:support@tokyonasu.com">support@tokyonasu.com</a>
+      </div>
 
-  <div class="card">
-    <h2>よくあるご質問 / FAQ</h2>
-    <p><strong>Q: ボタンが反応しない場合は？</strong><br>
-    アプリを再起動してお試しください。それでも解消しない場合はメールでご連絡ください。</p>
-    <p><strong>Q: コンテンツはオフラインで使えますか？</strong><br>
-    はい、すべてのコンテンツはオフラインでご利用いただけます。</p>
-    <p><strong>Q: Is internet required?</strong><br>
-    No, all content works fully offline.</p>
-    <p><strong>Q: 購入後に返金はできますか？</strong><br>
-    App Storeの返金ポリシーに従います。Apple サポートへお問い合わせください。</p>
-    <p><strong>Q: Can I get a refund?</strong><br>
-    Refunds follow Apple's App Store refund policy. Please contact Apple Support.</p>
-  </div>
+      <div class="card">
+        <h2>よくある質問</h2>
+        <p><strong>Q. このアプリは相手の感情を断定しますか？</strong><br>いいえ。BodyReaderは学習用のガイドです。ひとつのサインだけで判断せず、複数の手がかりと会話の流れを合わせて見ることをすすめています。</p>
+        <p><strong>Q. オフラインで使えますか？</strong><br>はい。収録コンテンツはアプリ内で利用できます。</p>
+        <p><strong>Q. 個人情報を集めますか？</strong><br>いいえ。アカウント登録は不要で、個人情報は収集しません。</p>
+      </div>
 
-  <div class="card">
-    <h2>プライバシーポリシー / Privacy Policy</h2>
-    <p>BodyReaderは個人情報を収集しません。アカウント登録は不要です。広告は表示されません。</p>
-    <p>BodyReader does not collect personal data. No account registration is required. The app contains no advertisements.</p>
-    <a href="privacy.html">プライバシーポリシー全文 / Full Privacy Policy</a>
-  </div>
+      <div class="card">
+        <h2>プライバシーポリシー</h2>
+        <p>BodyReaderは個人情報を収集しません。詳しくは以下をご確認ください。</p>
+        <a href="privacy.html">プライバシーポリシーを見る</a>
+      </div>
+    </section>
 
-  <footer>© 2025 Tokyo Nasu. All rights reserved.</footer>
+    <footer>© 2026 tokyonasu. All rights reserved.</footer>
+  </main>
 </body>
 </html>
