@@ -48,11 +48,15 @@ def find_app_id():
 
 
 def get_or_create_version(app_id, version_string):
-    states = "PREPARE_FOR_SUBMISSION,DEVELOPER_REJECTED,REJECTED,METADATA_REJECTED,WAITING_FOR_REVIEW,IN_REVIEW"
-    payload = api("GET", f"/apps/{app_id}/appStoreVersions?filter[platform]=IOS&filter[appStoreState]={states}&limit=10")
+    # First try: search all versions (no state filter) for exact match
+    payload = api("GET", f"/apps/{app_id}/appStoreVersions?filter[platform]=IOS&limit=10")
     for item in payload.get("data", []):
         if item["attributes"].get("versionString") == version_string:
+            print(f"Found existing version {version_string} (state: {item['attributes'].get('appStoreState')})")
             return item["id"]
+    # Second try: find editable version to update
+    editable_states = "PREPARE_FOR_SUBMISSION,DEVELOPER_REJECTED,REJECTED,METADATA_REJECTED"
+    payload = api("GET", f"/apps/{app_id}/appStoreVersions?filter[platform]=IOS&filter[appStoreState]={editable_states}&limit=10")
     for item in payload.get("data", []):
         old_version = item["attributes"].get("versionString", "")
         print(f"Found editable version {old_version}, updating to {version_string}")
