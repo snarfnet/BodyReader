@@ -27,6 +27,7 @@
 		B001002C /* quiz_data.json in Resources */ = {isa = PBXBuildFile; fileRef = B001002D /* quiz_data.json */; };
 		B001002E /* scenes_data.json in Resources */ = {isa = PBXBuildFile; fileRef = B001002F /* scenes_data.json */; };
 		B0010030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0010031 /* Assets.xcassets */; };
+		B00100A0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B00100A1 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		B001002F /* scenes_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scenes_data.json; sourceTree = "<group>"; };
 		B0010031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0010032 /* BodyReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BodyReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00100A1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				B0010039 /* Views */,
 				B001003A /* Utils */,
 				B0010031 /* Assets.xcassets */,
+				B00100A1 /* PrivacyInfo.xcprivacy */,
 			);
 			path = BodyReader;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				B001002C /* quiz_data.json in Resources */,
 				B001002E /* scenes_data.json in Resources */,
 				B0010030 /* Assets.xcassets in Resources */,
+				B00100A0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
