@@ -48,7 +48,7 @@ def find_app_id():
 
 
 def get_or_create_version(app_id, version_string):
-    states = "PREPARE_FOR_SUBMISSION,DEVELOPER_REJECTED,REJECTED,METADATA_REJECTED"
+    states = "PREPARE_FOR_SUBMISSION,DEVELOPER_REJECTED,REJECTED,METADATA_REJECTED,WAITING_FOR_REVIEW,IN_REVIEW"
     payload = api("GET", f"/apps/{app_id}/appStoreVersions?filter[platform]=IOS&filter[appStoreState]={states}&limit=10")
     for item in payload.get("data", []):
         if item["attributes"].get("versionString") == version_string:
