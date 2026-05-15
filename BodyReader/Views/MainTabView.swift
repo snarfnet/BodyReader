@@ -4,22 +4,25 @@ struct MainTabView: View {
     @State private var selectedTab = 0
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            DictionaryView()
-                .tabItem { Label(AppStrings.tabDictionary, systemImage: "person.text.rectangle.fill") }
-                .tag(0)
+        VStack(spacing: 0) {
+            TabView(selection: $selectedTab) {
+                DictionaryView()
+                    .tabItem { Label(AppStrings.tabDictionary, systemImage: "person.text.rectangle.fill") }
+                    .tag(0)
 
-            QuizView()
-                .tabItem { Label(AppStrings.tabQuiz, systemImage: "sparkle.magnifyingglass") }
-                .tag(1)
+                QuizView()
+                    .tabItem { Label(AppStrings.tabQuiz, systemImage: "sparkle.magnifyingglass") }
+                    .tag(1)
 
-            ScenesView()
-                .tabItem { Label(AppStrings.tabScenes, systemImage: "rectangle.3.group.bubble.left.fill") }
-                .tag(2)
+                ScenesView()
+                    .tabItem { Label(AppStrings.tabScenes, systemImage: "rectangle.3.group.bubble.left.fill") }
+                    .tag(2)
 
-            AboutView()
-                .tabItem { Label(AppStrings.tabAbout, systemImage: "heart.text.square.fill") }
-                .tag(3)
+                AboutView()
+                    .tabItem { Label(AppStrings.tabAbout, systemImage: "heart.text.square.fill") }
+                    .tag(3)
+            }
+            BottomAdBannerView()
         }
         .tint(AppColors.gold)
         .onAppear {
