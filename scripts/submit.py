@@ -107,7 +107,7 @@ def main():
                     "type": "appStoreVersionLocalizations",
                     "id": loc_id,
                     "attributes": {
-                        "whatsNew": "パフォーマンス改善と不具合修正",
+                        "whatsNew": "広告表示に対応し、表示まわりを調整しました。",
                     },
                 }
             })
