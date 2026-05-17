@@ -1,13 +1,13 @@
 import os
 import time
 
-from asc_api import api, find_app_id, get_or_create_version, get_localization_id
+from asc_api import api, find_app_id, get_localization_id, get_or_create_version
 
 APP_VERSION = os.environ.get("APP_VERSION", "1.0")
 BUILD_NUMBER = os.environ.get("BUILD_NUMBER", "")
 REVIEW_CONTACT = {
-    "contactFirstName": "東京",
-    "contactLastName": "なす",
+    "contactFirstName": "Tokyo",
+    "contactLastName": "Nasu",
     "contactEmail": "tokyonasu@yahoo.co.jp",
     "contactPhone": "+81 80-2368-9194",
 }
@@ -25,7 +25,7 @@ def wait_for_build(app_id):
             print(f"  build {version}: {state}")
             if BUILD_NUMBER and version == str(BUILD_NUMBER) and state == "VALID":
                 return item["id"]
-            elif not BUILD_NUMBER and version and state == "VALID":
+            if not BUILD_NUMBER and version and state == "VALID":
                 return item["id"]
             if state == "VALID" and latest_valid_id is None:
                 latest_valid_id = item["id"]
@@ -35,6 +35,33 @@ def wait_for_build(app_id):
         print("Target build not found, using latest valid build")
         return latest_valid_id
     raise RuntimeError("No valid processed build found")
+
+
+def update_review_detail(version_id):
+    review_details = api("GET", f"/appStoreVersions/{version_id}/appStoreReviewDetail")
+    attrs = {
+        **REVIEW_CONTACT,
+        "demoAccountRequired": False,
+        "demoAccountName": "",
+        "demoAccountPassword": "",
+        "notes": (
+            "This build removes the ad SDK startup path to address the launch crash reported by App Review. "
+            "The app now launches directly into the body-language dictionary, quiz, and scene guide."
+        ),
+    }
+    if review_details.get("data"):
+        detail_id = review_details["data"]["id"]
+        api("PATCH", f"/appStoreReviewDetails/{detail_id}", json={
+            "data": {"type": "appStoreReviewDetails", "id": detail_id, "attributes": attrs}
+        })
+    else:
+        api("POST", "/appStoreReviewDetails", json={
+            "data": {
+                "type": "appStoreReviewDetails",
+                "attributes": attrs,
+                "relationships": {"appStoreVersion": {"data": {"type": "appStoreVersions", "id": version_id}}},
+            }
+        })
 
 
 def main():
@@ -66,21 +93,7 @@ def main():
         else:
             raise
 
-    review_details = api("GET", f"/appStoreVersions/{version_id}/appStoreReviewDetail")
-    attrs = {**REVIEW_CONTACT, "demoAccountRequired": False, "demoAccountName": "", "demoAccountPassword": ""}
-    if review_details.get("data"):
-        detail_id = review_details["data"]["id"]
-        api("PATCH", f"/appStoreReviewDetails/{detail_id}", json={
-            "data": {"type": "appStoreReviewDetails", "id": detail_id, "attributes": attrs}
-        })
-    else:
-        api("POST", "/appStoreReviewDetails", json={
-            "data": {
-                "type": "appStoreReviewDetails",
-                "attributes": attrs,
-                "relationships": {"appStoreVersion": {"data": {"type": "appStoreVersions", "id": version_id}}},
-            }
-        })
+    update_review_detail(version_id)
 
     for attempt in range(5):
         try:
@@ -93,7 +106,7 @@ def main():
             if "409" in str(e):
                 print("Build already linked to version, skipping")
                 break
-            elif attempt < 4:
+            if attempt < 4:
                 print(f"Build link attempt {attempt + 1} failed, retrying in 30s...")
                 time.sleep(30)
             else:
@@ -107,7 +120,7 @@ def main():
                     "type": "appStoreVersionLocalizations",
                     "id": loc_id,
                     "attributes": {
-                        "whatsNew": "広告表示に対応し、表示まわりを調整しました。",
+                        "whatsNew": "起動時の安定性を改善し、画面内の文言を読みやすく整えました。",
                     },
                 }
             })
@@ -118,7 +131,6 @@ def main():
             else:
                 raise
 
-    # Clean up stale review submissions
     canceled = False
     for state in ["READY_FOR_REVIEW", "COMPLETING", "UNRESOLVED_ISSUES"]:
         try:
@@ -137,9 +149,9 @@ def main():
 
     if canceled:
         print("Waiting for cancellation to propagate...")
-        time.sleep(10)
+        time.sleep(20)
 
-    for attempt in range(3):
+    for attempt in range(4):
         try:
             review = api("POST", "/reviewSubmissions", json={
                 "data": {
@@ -166,9 +178,9 @@ def main():
             print("Submitted for review")
             break
         except RuntimeError as e:
-            if "409" in str(e) and attempt < 2:
-                print(f"Submit attempt {attempt + 1} failed (409), waiting 15s...")
-                time.sleep(15)
+            if "409" in str(e) and attempt < 3:
+                print(f"Submit attempt {attempt + 1} failed (409), waiting 20s...")
+                time.sleep(20)
             else:
                 raise
 

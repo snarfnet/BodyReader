@@ -14,12 +14,12 @@ struct ScenesView: View {
                         imageName: "scene-conversation",
                         eyebrow: "SCENE PRACTICE",
                         title: "場面ごとに、見る順番を変える",
-                        subtitle: "恋愛、面接、雑談、交渉。相手を決めつけず、状況に合う見方を選びます。"
+                        subtitle: "恋愛、面接、初対面、交渉。相手を決めつけず、状況に合う見方を選びます。"
                     )
                     .padding(.horizontal, 18)
                     .padding(.top, 14)
 
-                    SectionHeader("シーン別ガイド", subtitle: "その場で使いやすい観察ポイント")
+                    SectionHeader("シーン別ガイド", subtitle: "その場で使いやすい観察のヒント")
                         .padding(.horizontal, 18)
 
                     VStack(spacing: 14) {

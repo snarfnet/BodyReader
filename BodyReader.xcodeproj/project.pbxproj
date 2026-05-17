@@ -30,7 +30,6 @@
 		B00100A0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B00100A1 /* PrivacyInfo.xcprivacy */; };
 		B00100B0 /* AdMobService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00100B1 /* AdMobService.swift */; };
 		B00100B2 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00100B3 /* BannerAdView.swift */; };
-		B00100B4 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B00100B5 /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00100B4 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +229,6 @@
 			);
 			name = BodyReader;
 			packageProductDependencies = (
-				B00100B5 /* GoogleMobileAds */,
 			);
 			productName = BodyReader;
 			productReference = B0010032 /* BodyReader.app */;
@@ -263,7 +260,6 @@
 			);
 			mainGroup = B0010041 /* MainGroup */;
 			packageReferences = (
-				B00100B7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = B0010040 /* Products */;
 			projectDirPath = "";
@@ -446,8 +442,6 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BodyReader;
-				INFOPLIST_KEY_GADApplicationIdentifier = "ca-app-pub-9404799280370656~4792796326";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "広告の表示内容を調整するために使用します。許可しない場合もアプリは利用できます。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -475,8 +469,6 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = BodyReader;
-				INFOPLIST_KEY_GADApplicationIdentifier = "ca-app-pub-9404799280370656~4792796326";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "広告の表示内容を調整するために使用します。許可しない場合もアプリは利用できます。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -516,25 +508,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B00100B7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B00100B5 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B00100B7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 	};
 	rootObject = B0010046 /* Project object */;

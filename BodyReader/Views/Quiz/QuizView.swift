@@ -23,6 +23,10 @@ struct QuizView: View {
                     onSelect: { viewModel.selectAnswer($0) },
                     onNext: { viewModel.nextQuestion() }
                 )
+            } else {
+                EmptyQuizView {
+                    viewModel.startNewQuiz()
+                }
             }
         }
         .animation(.spring(response: 0.38, dampingFraction: 0.82), value: viewModel.currentIndex)
@@ -48,7 +52,7 @@ struct QuizQuestionView: View {
                     imageName: "quiz-clues",
                     eyebrow: "PRACTICE",
                     title: "読み取りクイズ",
-                    subtitle: "場面を読んで、相手の心に近い選択肢を選びます。"
+                    subtitle: "場面を読んで、相手の気持ちに近い選択肢を選びます。"
                 )
                 .padding(.horizontal, 18)
                 .padding(.top, 14)
@@ -231,6 +235,26 @@ struct QuizResultView: View {
                 Spacer(minLength: 40)
             }
         }
+    }
+}
+
+struct EmptyQuizView: View {
+    let onRetry: () -> Void
+
+    var body: some View {
+        VStack(spacing: 16) {
+            CategoryIconView(systemName: "exclamationmark.triangle.fill", color: AppColors.gold, size: 54)
+            Text("クイズを準備できませんでした")
+                .font(AppFonts.headline(18))
+                .foregroundStyle(.white)
+            Button("再読み込み", action: onRetry)
+                .font(AppFonts.headline(15))
+                .foregroundStyle(AppColors.ink)
+                .padding(.horizontal, 22)
+                .padding(.vertical, 12)
+                .background(AppColors.gold, in: Capsule())
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

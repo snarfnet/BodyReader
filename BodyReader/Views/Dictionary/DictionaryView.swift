@@ -13,7 +13,7 @@ struct DictionaryView: View {
                     HeroArtCard(
                         imageName: "hero-bodyreader",
                         eyebrow: "BODY SIGNAL ATLAS",
-                        title: "しぐさから感情の輪郭を読む",
+                        title: "しぐさから気持ちの手がかりを読む",
                         subtitle: "顔、手、姿勢、距離感。ひとつのサインで決めつけず、複数の手がかりを合わせて見ます。"
                     )
                     .padding(.horizontal, 18)
