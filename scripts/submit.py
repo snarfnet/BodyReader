@@ -45,8 +45,10 @@ def update_review_detail(version_id):
         "demoAccountName": "",
         "demoAccountPassword": "",
         "notes": (
-            "This build removes the ad SDK startup path to address the launch crash reported by App Review. "
-            "The app now launches directly into the body-language dictionary, quiz, and scene guide."
+            "This build uses Google AdMob and requests tracking permission through App Tracking "
+            "Transparency after launch, before Mobile Ads is started and before ads are loaded. "
+            "The permission prompt is triggered from the bottom banner startup path. UI spacing was "
+            "also revised for iPad so text wraps instead of being cut off."
         ),
     }
     if review_details.get("data"):
@@ -120,7 +122,7 @@ def main():
                     "type": "appStoreVersionLocalizations",
                     "id": loc_id,
                     "attributes": {
-                        "whatsNew": "起動時の安定性を改善し、画面内の文言を読みやすく整えました。",
+                        "whatsNew": "広告表示前にATT許可を確認するようにし、iPadで文字が切れないように表示を調整しました。",
                     },
                 }
             })

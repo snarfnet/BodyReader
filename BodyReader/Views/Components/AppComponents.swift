@@ -74,13 +74,18 @@ struct HeroArtCard: View {
     let eyebrow: String
     let title: String
     let subtitle: String
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var heroHeight: CGFloat {
+        horizontalSizeClass == .regular ? 320 : 286
+    }
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             Image(imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(height: 278)
+                .frame(height: heroHeight)
                 .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
 
             LinearGradient(
@@ -98,17 +103,19 @@ struct HeroArtCard: View {
                     .padding(.vertical, 5)
                     .background(.black.opacity(0.32), in: Capsule())
                 Text(title)
-                    .font(AppFonts.title(31))
+                    .font(AppFonts.title(horizontalSizeClass == .regular ? 30 : 28))
                     .foregroundStyle(.white)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.78)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.72)
                 Text(subtitle)
                     .font(AppFonts.body(14))
                     .foregroundStyle(.white.opacity(0.82))
                     .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .padding(20)
         }
+        .frame(minHeight: heroHeight)
         .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(.white.opacity(0.16), lineWidth: 1))
         .shadow(color: .black.opacity(0.35), radius: 24, x: 0, y: 16)
     }
@@ -132,6 +139,7 @@ struct SectionHeader: View {
                 Text(subtitle)
                     .font(AppFonts.body(14))
                     .foregroundStyle(.white.opacity(0.68))
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

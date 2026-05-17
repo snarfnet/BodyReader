@@ -110,7 +110,7 @@ struct CategorySection: View {
             .padding(.horizontal, 18)
 
             if isExpanded {
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 230), spacing: 12)], spacing: 12) {
                     ForEach(category.signals) { signal in
                         Button { onSelect(signal) } label: {
                             SignalCardView(signal: signal, accent: accent)
@@ -145,19 +145,18 @@ struct SignalCardView: View {
             Text(signal.nameJP)
                 .font(AppFonts.headline(15))
                 .foregroundStyle(AppColors.textPrimary)
-                .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
 
             Text(signal.nameEN)
                 .font(AppFonts.caption(11))
                 .foregroundStyle(accent)
-                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
 
             Text(signal.description)
                 .font(AppFonts.body(12))
                 .foregroundStyle(AppColors.textSecondary)
-                .lineLimit(3)
                 .lineSpacing(2)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, minHeight: 176, alignment: .topLeading)
         .padding(14)

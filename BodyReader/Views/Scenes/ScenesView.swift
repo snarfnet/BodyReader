@@ -66,7 +66,7 @@ struct SceneCardView: View {
             Image(imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 96, height: 96)
+                .frame(width: 84, height: 84)
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(.white.opacity(0.22), lineWidth: 1))
 
@@ -76,12 +76,12 @@ struct SceneCardView: View {
                     Text(scene.title)
                         .font(AppFonts.headline(16))
                         .foregroundStyle(.white)
-                        .lineLimit(1)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 Text(scene.subtitle)
                     .font(AppFonts.body(13))
                     .foregroundStyle(.white.opacity(0.68))
-                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
                 PillTag(text: "\(scene.points.count)ステップ", color: accent)
             }
 

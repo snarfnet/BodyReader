@@ -84,7 +84,7 @@ struct FeatureRow: View {
                 Text(subtitle)
                     .font(AppFonts.body(13))
                     .foregroundStyle(.white.opacity(0.66))
-                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
         }
