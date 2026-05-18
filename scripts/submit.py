@@ -45,12 +45,10 @@ def update_review_detail(version_id):
         "demoAccountName": "",
         "demoAccountPassword": "",
         "notes": (
-            "This build uses Google AdMob and requests tracking permission through App Tracking "
-            "Transparency after launch, before Mobile Ads is started and before ads are loaded. "
-            "The permission prompt is triggered from the bottom banner startup path on iPhone. "
-            "On iPad compatibility mode, ads and tracking are disabled so the app launches without "
-            "starting the ad SDK. UI spacing was also revised for iPad so text wraps instead of "
-            "being cut off."
+            "This build removes Google AdMob and all ad SDK startup paths to address the launch "
+            "crash seen on iPad Air 11-inch (M3) with iPadOS 26.5. The app does not request IDFA, "
+            "does not collect Device ID or Advertising Data, and does not track users in this build. "
+            "Please review the updated build as a no-ads crash fix."
         ),
     }
     if review_details.get("data"):
@@ -124,7 +122,7 @@ def main():
                     "type": "appStoreVersionLocalizations",
                     "id": loc_id,
                     "attributes": {
-                        "whatsNew": "iPad互換表示の起動安定性を改善しました。iPhoneでは広告表示前にATT許可を確認します。",
+                        "whatsNew": "iPadでの起動安定性を改善しました。このビルドでは広告SDKを外しています。",
                     },
                 }
             })
