@@ -16,6 +16,8 @@ final class AdMobStartup: ObservableObject {
     private var didRequestTracking = false
     private var isStarting = false
 
+    private init() {}
+
     var canShowAds: Bool {
         UIDevice.current.userInterfaceIdiom == .phone
     }

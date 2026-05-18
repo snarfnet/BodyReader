@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct MainTabView: View {
     @State private var selectedTab = 0
@@ -22,7 +23,9 @@ struct MainTabView: View {
                     .tabItem { Label(AppStrings.tabAbout, systemImage: "heart.text.square.fill") }
                     .tag(3)
             }
-            BottomAdBannerView()
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                BottomAdBannerView()
+            }
         }
         .tint(AppColors.gold)
         .onAppear {
