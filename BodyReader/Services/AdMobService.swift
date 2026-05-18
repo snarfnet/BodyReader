@@ -1,6 +1,7 @@
 import AppTrackingTransparency
 import GoogleMobileAds
 import SwiftUI
+import UIKit
 
 enum AdMobConfig {
     static let appID = "ca-app-pub-9404799280370656~4792796326"
@@ -15,7 +16,12 @@ final class AdMobStartup: ObservableObject {
     private var didRequestTracking = false
     private var isStarting = false
 
+    var canShowAds: Bool {
+        UIDevice.current.userInterfaceIdiom == .phone
+    }
+
     func requestTrackingAndStart() {
+        guard canShowAds else { return }
         guard !isReady, !isStarting, !didRequestTracking else { return }
         didRequestTracking = true
         isStarting = true

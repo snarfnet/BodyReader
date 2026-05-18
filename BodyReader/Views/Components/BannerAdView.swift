@@ -49,16 +49,16 @@ struct BottomAdBannerView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            if adMobStartup.isReady, geometry.size.width > 0 {
+            if adMobStartup.canShowAds, adMobStartup.isReady, geometry.size.width > 0 {
                 BannerAdView(
                     adUnitID: AdMobConfig.bottomBannerID,
                     adSize: currentOrientationAnchoredAdaptiveBanner(width: geometry.size.width)
                 )
             }
         }
-        .frame(height: adMobStartup.isReady ? 54 : 0)
+        .frame(height: adMobStartup.canShowAds && adMobStartup.isReady ? 54 : 0)
         .frame(maxWidth: .infinity)
-        .background(AppColors.ink.opacity(adMobStartup.isReady ? 0.96 : 0))
+        .background(AppColors.ink.opacity(adMobStartup.canShowAds && adMobStartup.isReady ? 0.96 : 0))
         .task {
             adMobStartup.requestTrackingAndStart()
         }

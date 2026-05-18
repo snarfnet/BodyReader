@@ -47,8 +47,10 @@ def update_review_detail(version_id):
         "notes": (
             "This build uses Google AdMob and requests tracking permission through App Tracking "
             "Transparency after launch, before Mobile Ads is started and before ads are loaded. "
-            "The permission prompt is triggered from the bottom banner startup path. UI spacing was "
-            "also revised for iPad so text wraps instead of being cut off."
+            "The permission prompt is triggered from the bottom banner startup path on iPhone. "
+            "On iPad compatibility mode, ads and tracking are disabled so the app launches without "
+            "starting the ad SDK. UI spacing was also revised for iPad so text wraps instead of "
+            "being cut off."
         ),
     }
     if review_details.get("data"):
@@ -122,7 +124,7 @@ def main():
                     "type": "appStoreVersionLocalizations",
                     "id": loc_id,
                     "attributes": {
-                        "whatsNew": "広告表示前にATT許可を確認するようにし、iPadで文字が切れないように表示を調整しました。",
+                        "whatsNew": "iPad互換表示の起動安定性を改善しました。iPhoneでは広告表示前にATT許可を確認します。",
                     },
                 }
             })
